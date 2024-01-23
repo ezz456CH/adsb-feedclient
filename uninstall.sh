@@ -1,26 +1,26 @@
 #!/bin/bash
 set -x
 
-IPATH=/usr/local/share/adsbexchange
+IPATH=/usr/local/share/ezz456CH
 
-systemctl disable --now adsbexchange-mlat
-systemctl disable --now adsbexchange-mlat2 &>/dev/null
-systemctl disable --now adsbexchange-feed
+systemctl disable --now ezz456ch-mlat
+systemctl disable --now ezz456ch-mlat2 &>/dev/null
+systemctl disable --now ezz456ch-feed
 
-if [[ -d /usr/local/share/tar1090/html-adsbx ]]; then
-    bash /usr/local/share/tar1090/uninstall.sh adsbx
+if [[ -d /usr/local/share/tar1090/html-adsb ]]; then
+    bash /usr/local/share/tar1090/uninstall.sh adsb
 fi
 
-rm -f /lib/systemd/system/adsbexchange-mlat.service
-rm -f /lib/systemd/system/adsbexchange-mlat2.service
-rm -f /lib/systemd/system/adsbexchange-feed.service
+rm -f /lib/systemd/system/ezz456ch-mlat.service
+rm -f /lib/systemd/system/ezz456ch-mlat2.service
+rm -f /lib/systemd/system/ezz456ch-feed.service
 
-cp -f "$IPATH/adsbx-uuid" /tmp/adsbx-uuid
+cp -f "$IPATH/adsb-uuid" /tmp/adsb-uuid
 rm -rf "$IPATH"
 mkdir -p "$IPATH"
-mv -f /tmp/adsbx-uuid "$IPATH/adsbx-uuid"
+mv -f /tmp/adsb-uuid "$IPATH/adsb-uuid"
 
 set +x
 
 echo -----
-echo "adsbexchange feed scripts have been uninstalled!"
+echo "adsb.ezz456ch.xyz feed scripts have been uninstalled!"
