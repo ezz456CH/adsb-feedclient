@@ -29,7 +29,7 @@
 
 set -e
 
-IPATH=/usr/local/share/ezz456CH
+IPATH=/usr/local/share/ezz456ch
 
 ## we need to install stuff that require root, check for that
 if [ "$(id -u)" != "0" ]; then

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 
-IPATH=/usr/local/share/ezz456CH
+IPATH=/usr/local/share/ezz456ch
 
 systemctl disable --now ezz456ch-mlat
 systemctl disable --now ezz456ch-mlat2 &>/dev/null

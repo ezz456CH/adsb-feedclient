@@ -3,7 +3,7 @@ set -e
 
 REPO="https://github.com/ezz456CH/adsb-feedclient.git"
 BRANCH="master"
-IPATH=/usr/local/share/ezz456CH
+IPATH=/usr/local/share/ezz456ch
 mkdir -p $IPATH
 
 if [ "$(id -u)" != "0" ]; then

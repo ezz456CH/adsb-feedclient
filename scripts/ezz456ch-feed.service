@@ -7,7 +7,7 @@ After=network.target
 [Service]
 User=ezz456ch
 RuntimeDirectory=ezz456ch-feed
-ExecStart=/usr/local/share/ezz456CH/ezz456ch-feed.sh
+ExecStart=/usr/local/share/ezz456ch/ezz456ch-feed.sh
 Type=simple
 Restart=always
 RestartSec=30

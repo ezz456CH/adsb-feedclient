@@ -15,8 +15,8 @@ After=network.target
 
 [Service]
 User=ezz456ch
-EnvironmentFile=/etc/default/ezz456CH
-ExecStart=/usr/local/share/ezz456CH/venv/bin/mlat-client \
+EnvironmentFile=/etc/default/ezz456ch
+ExecStart=/usr/local/share/ezz456ch/venv/bin/mlat-client \
     --input-type $INPUT_TYPE --no-udp \
     --input-connect $INPUT \
     --server adsb.ezz456ch.xyz:SERVERPORT \

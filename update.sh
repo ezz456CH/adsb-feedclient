@@ -92,7 +92,7 @@ function getGIT() {
 REPO="https://github.com/ezz456CH/adsb-feedclient.git"
 BRANCH="master"
 
-IPATH=/usr/local/share/ezz456CH
+IPATH=/usr/local/share/ezz456ch
 GIT="$IPATH/git"
 mkdir -p $IPATH
 
@@ -119,9 +119,9 @@ if [ -f /boot/adsb-config.txt ]; then
     source /boot/adsb-config.txt
     source /boot/adsb-env
 else
-    source /etc/default/ezz456CH
-    if ! grep -qs -e UAT_INPUT /etc/default/ezz456CH; then
-        cat >> /etc/default/ezz456CH <<"EOF"
+    source /etc/default/ezz456ch
+    if ! grep -qs -e UAT_INPUT /etc/default/ezz456ch; then
+        cat >> /etc/default/ezz456ch <<"EOF"
 
 # this is the source for 978 data, use port 30978 from dump978 --raw-port
 # if you're not receiving 978, don't worry about it, not doing any harm!
@@ -147,7 +147,7 @@ fi
 cp "$GIT/uninstall.sh" "$IPATH"
 cp "$GIT"/scripts/*.sh "$IPATH"
 
-UNAME=ezz456CH
+UNAME=ezz456ch
 if ! id -u "${UNAME}" &>/dev/null
 then
     # 2nd syntax is for fedora / centos
@@ -174,7 +174,7 @@ echo
 bash "$IPATH/git/create-uuid.sh"
 
 VENV=$IPATH/venv
-if [[ -f /usr/local/share/ezz456CH/venv/bin/python3.7 ]] && command -v python3.9 &>/dev/null;
+if [[ -f /usr/local/share/ezz456ch/venv/bin/python3.7 ]] && command -v python3.9 &>/dev/null;
 then
     rm -rf "$VENV"
 fi
@@ -360,7 +360,7 @@ if grep -qs 'SERVER_HOSTPORT.*adsb.ezz456ch.xyz' /etc/default/mlat-client &>/dev
     systemctl disable --now mlat-client >> $LOGFILE 2>&1 || true
 fi
 
-if [[ -f /etc/default/ezz456CH ]]; then
+if [[ -f /etc/default/ezz456ch ]]; then
     sed -i -e 's/adsb.ezz456ch.xyz,30004,beast_reduce_out,adsb.ezz456ch.xyz,64004/adsb.ezz456ch.xyz,30004,beast_reduce_out,adsb.ezz456ch.xyz,64004/' /etc/default/ezz456CH || true
 fi
 

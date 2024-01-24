@@ -3,8 +3,8 @@
 if [ -f /boot/adsb-config.txt ]; then
     UUID_FILE="/boot/ezz456ch-uuid"
 else
-    mkdir -p /usr/local/share/ezz456CH
-    UUID_FILE="/usr/local/share/ezz456CH/ezz456ch-uuid"
+    mkdir -p /usr/local/share/ezz456ch
+    UUID_FILE="/usr/local/share/ezz456ch/ezz456ch-uuid"
     # move old file position
     if [ -f /boot/ezz456ch-uuid ]; then
         mv -f /boot/ezz456ch-uuid $UUID_FILE

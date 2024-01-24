@@ -31,7 +31,7 @@ set -e
 trap 'echo "[ERROR] Error in line $LINENO when executing: $BASH_COMMAND"' ERR
 renice 10 $$ &>/dev/null
 
-IPATH=/usr/local/share/ezz456CH
+IPATH=/usr/local/share/ezz456ch
 
 function abort() {
     echo ------------
@@ -43,7 +43,7 @@ function abort() {
 
 ## WHIPTAIL DIALOGS
 
-BACKTITLETEXT="ezz456CH Exchange Setup Script"
+BACKTITLETEXT="ezz456CH Setup Script"
 
 whiptail --backtitle "$BACKTITLETEXT" --title "$BACKTITLETEXT" --yesno "Thanks for choosing to share your data with adsb.ezz456ch.xyz!\n\nThis script will configure your current your ADS-B receiver to share your feeders data with adsb.ezz456ch.xyz.\n\nWould you like to continue setup?" 13 78 || abort
 
@@ -111,7 +111,7 @@ if [[ $(hostname) == "radarcape" ]] || pgrep rcd &>/dev/null; then
     INPUT_TYPE="radarcape_gps"
 fi
 
-tee /etc/default/ezz456CH >/dev/null <<EOF
+tee /etc/default/ezz456ch >/dev/null <<EOF
 INPUT="$INPUT"
 REDUCE_INTERVAL="0.5"
 
