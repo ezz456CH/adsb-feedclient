@@ -361,7 +361,7 @@ if grep -qs 'SERVER_HOSTPORT.*adsb.ezz456ch.xyz' /etc/default/mlat-client &>/dev
 fi
 
 if [[ -f /etc/default/ezz456ch ]]; then
-    sed -i -e 's/adsb.ezz456ch.xyz,30004,beast_reduce_out,adsb.ezz456ch.xyz,64004/adsb.ezz456ch.xyz,30004,beast_reduce_out,adsb.ezz456ch.xyz,64004/' /etc/default/ezz456CH || true
+    sed -i -e 's/adsb.ezz456ch.xyz,30004,beast_reduce_out,adsb.ezz456ch.xyz,64004/adsb.ezz456ch.xyz,30004,beast_reduce_out,adsb.ezz456ch.xyz,64004/' /etc/default/ezz456ch || true
 fi
 
 
@@ -375,7 +375,7 @@ ENDTEXT="
 Thanks for choosing to share your data with adsb.ezz456ch.xyz!
 
 Webinterface to show the data transmitted? Run this command:
-sudo bash /usr/local/share/ezz456CH/git/install-or-update-interface.sh
+sudo bash /usr/local/share/ezz456ch/git/install-or-update-interface.sh
 "
 
 INPUT_IP=$(echo $INPUT | cut -d: -f1)
