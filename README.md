@@ -25,4 +25,18 @@ sudo bash /tmp/ezz456chupdate.sh
 
 ```
 sudo systemctl status ezz456ch-feed
+sudo systemctl status ezz456ch-mlat
+```
+
+### Reconfigure the client without reinstalling
+
+```
+sudo nano /etc/default/ezz456ch
+```
+
+then restart the client
+
+```
+sudo systemctl restart ezz456ch-feed
+sudo systemctl restart ezz456ch-mlat
 ```
