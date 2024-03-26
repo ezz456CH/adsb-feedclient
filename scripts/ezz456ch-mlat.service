@@ -6,7 +6,7 @@ After=network.target
 
 [Service]
 User=ezz456ch
-ExecStart=/usr/local/share/ezz456ch/ezz456ch-mlat.sh
+ExecStart=bash /usr/local/share/ezz456ch/ezz456ch-mlat.sh
 Type=simple
 Restart=always
 RestartSec=30
