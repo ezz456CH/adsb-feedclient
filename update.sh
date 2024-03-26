@@ -115,9 +115,9 @@ if diff "$GIT/update.sh" "$IPATH/update.sh" &>/dev/null; then
     exit $?
 fi
 
-if [ -f /boot/adsb-config.txt ]; then
-    source /boot/adsb-config.txt
-    source /boot/adsb-env
+if [ -f /boot/ezz456ch-config.txt ]; then
+    source /boot/ezz456ch-config.txt
+    source /boot/ezz456ch-env
 else
     source /etc/default/ezz456ch
     if ! grep -qs -e UAT_INPUT /etc/default/ezz456ch; then
@@ -265,7 +265,7 @@ if grep -E 'wheezy|jessie' /etc/os-release -qs; then
 fi
 READSB_VERSION="$(git ls-remote $READSB_REPO $READSB_BRANCH | cut -f1 || echo $RANDOM-$RANDOM )"
 READSB_GIT="$IPATH/readsb-git"
-READSB_BIN="$IPATH/feed-adsb"
+READSB_BIN="$IPATH/feed-ezz456ch"
 if [[ $REINSTALL != yes ]] && grep -e "$READSB_VERSION" -qs $IPATH/readsb_version \
     && "$READSB_BIN" -V && systemctl is-active ezz456ch-feed &>/dev/null
 then
@@ -356,12 +356,12 @@ for name in ezz456ch-netcat_maint.sh ezz456ch-socat_maint.sh ezz456ch-mlat_maint
 done
 
 # in case the mlat-client service using /etc/default/mlat-client as config is using adsb.ezz456ch.xyz as a host, disable the service
-if grep -qs 'SERVER_HOSTPORT.*adsb.ezz456ch.xyz' /etc/default/mlat-client &>/dev/null; then
+if grep -qs 'SERVER_HOSTPORT.*feed.ezz456ch.xyz' /etc/default/mlat-client &>/dev/null; then
     systemctl disable --now mlat-client >> $LOGFILE 2>&1 || true
 fi
 
 if [[ -f /etc/default/ezz456ch ]]; then
-    sed -i -e 's/adsb.ezz456ch.xyz,30004,beast_reduce_out,adsb.ezz456ch.xyz,64004/adsb.ezz456ch.xyz,30004,beast_reduce_out,adsb.ezz456ch.xyz,64004/' /etc/default/ezz456ch || true
+    sed -i -e 's/feed.ezz456ch.xyz,30004,beast_reduce_out,feed.ezz456ch.xyz,64004/feed.ezz456ch.xyz,30004,beast_reduce_out,feed.ezz456ch.xyz,64004/' /etc/default/ezz456ch || true
 fi
 
 

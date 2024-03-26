@@ -7,18 +7,18 @@ systemctl disable --now ezz456ch-mlat
 systemctl disable --now ezz456ch-mlat2 &>/dev/null
 systemctl disable --now ezz456ch-feed
 
-if [[ -d /usr/local/share/tar1090/html-adsb ]]; then
-    bash /usr/local/share/tar1090/uninstall.sh adsb
+if [[ -d /usr/local/share/tar1090/html-ezz456ch ]]; then
+    bash /usr/local/share/tar1090/uninstall.sh ezz456ch
 fi
 
 rm -f /lib/systemd/system/ezz456ch-mlat.service
 rm -f /lib/systemd/system/ezz456ch-mlat2.service
 rm -f /lib/systemd/system/ezz456ch-feed.service
 
-cp -f "$IPATH/adsb-uuid" /tmp/adsb-uuid
+cp -f "$IPATH/ezz456ch-uuid" /tmp/ezz456ch-uuid
 rm -rf "$IPATH"
 mkdir -p "$IPATH"
-mv -f /tmp/adsb-uuid "$IPATH/adsb-uuid"
+mv -f /tmp/ezz456ch-uuid "$IPATH/ezz456ch-uuid"
 
 set +x
 

@@ -28,7 +28,7 @@ UAT_PORT=$(echo $UAT_INPUT | cut -d: -f2)
 UAT_SOURCE="--net-connector $UAT_IP,$UAT_PORT,uat_in,silent_fail"
 
 
-exec /usr/local/share/ezz456ch/feed-adsb --net --net-only --quiet \
+exec /usr/local/share/ezz456ch/feed-ezz456ch --net --net-only --quiet \
     --write-json /run/ezz456ch-feed \
     --net-beast-reduce-interval $REDUCE_INTERVAL \
     $TARGET $NET_OPTIONS \
