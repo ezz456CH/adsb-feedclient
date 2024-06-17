@@ -37,7 +37,7 @@ fi
 
 if [ "$(id -u)" != "0" ]; then
     echo -e "\033[33m"
-    echo "This script must be ran using sudo or as root."
+    echo "This script must be run using sudo or as root."
     echo -e "\033[37m"
     exit 1
 fi
@@ -55,7 +55,7 @@ function aptInstall() {
 }
 
 
-packages="git wget unzip curl build-essential python3-dev socat python3-venv ncurses-dev ncurses-bin uuid-runtime zlib1g-dev zlib1g"
+packages="git wget unzip curl build-essential python3 python3-pip python3-dev socat python3-venv ncurses-dev ncurses-bin uuid-runtime zlib1g-dev zlib1g"
 if ! grep -E 'wheezy|jessie' /etc/os-release -qs; then
     packages+=" libzstd-dev libzstd1"
 fi
@@ -66,9 +66,9 @@ if command -v apt &>/dev/null; then
         aptInstall netcat-openbsd || true
     fi
 elif command -v yum &>/dev/null; then
-    yum install -y git curl socat python3-virtualenv python3-devel gcc make ncurses-devel nc uuid zlib-devel zlib libzstd-devel libzstd
+    yum install -y git curl socat python3 python3-pip python3-virtualenv python3-devel gcc make ncurses-devel nc uuid zlib-devel zlib libzstd-devel libzstd
 elif command -v dnf &>/dev/null; then
-    dnf install -y git curl socat python3-virtualenv python3-devel gcc make ncurses-devel nc uuid zlib-devel zlib libzstd-devel libzstd
+    dnf install -y git curl socat python3 python3-pip python3-virtualenv python3-devel gcc make ncurses-devel nc uuid zlib-devel zlib libzstd-devel libzstd
 fi
 
 hash -r
@@ -154,7 +154,7 @@ then
     adduser --system --home "$IPATH" --no-create-home --quiet "$UNAME" || adduser --system --home-dir "$IPATH" --no-create-home "$UNAME"
 fi
 
-echo 4
+echo "4%"
 sleep 0.25
 
 # BUILD AND CONFIGURE THE MLAT-CLIENT PACKAGE
@@ -202,20 +202,20 @@ else
 
     cd $MLAT_GIT
 
-    echo 34
+    echo "34%"
 
     rm "$VENV-backup" -rf
     mv "$VENV" "$VENV-backup" -f &>/dev/null || true
     if /usr/bin/python3 -m venv $VENV >> $LOGFILE \
-        && echo 36 \
+        && echo "36%" \
         && source $VENV/bin/activate >> $LOGFILE \
-        && echo 38 \
-        && python3 setup.py build >> $LOGFILE \
-        && echo 40 \
-        && python3 setup.py install >> $LOGFILE \
-        && echo 46 \
+        && echo "38%" \
+        && pip install setuptools \
+        && echo "40%" \
+        && pip install . \
+        && echo "46%" \
         && revision > $IPATH/mlat_version || rm -f $IPATH/mlat_version \
-        && echo 48 \
+        && echo "48%" \
     ; then
         rm "$VENV-backup" -rf
     else
@@ -229,12 +229,12 @@ else
     fi
 fi
 
-echo 50
+echo "50%"
 
 # copy ezz456ch-mlat service file
 cp "$GIT"/scripts/ezz456ch-mlat.service /lib/systemd/system
 
-echo 60
+echo "60%"
 
 if ls -l /etc/systemd/system/ezz456ch-mlat.service 2>&1 | grep '/dev/null' &>/dev/null; then
     echo "--------------------"
@@ -254,7 +254,7 @@ else
     fi
 fi
 
-echo 70
+echo "70%"
 
 # SETUP FEEDER TO SEND DUMP1090 DATA TO ADS-B EXCHANGE
 
@@ -279,18 +279,18 @@ else
     echo
 
     #compile readsb
-    echo 72
+    echo "72%"
 
     # getGIT $REPO $BRANCH $TARGET-DIR
     getGIT "$READSB_REPO" "$READSB_BRANCH" "$READSB_GIT" &> $LOGFILE
 
     cd "$READSB_GIT"
 
-    echo 74
+    echo "74%"
 
     make clean
     make -j2 AIRCRAFT_HASH_BITS=12 >> $LOGFILE
-    echo 80
+    echo "80%"
     rm -f "$READSB_BIN"
     cp readsb "$READSB_BIN"
     revision > $IPATH/readsb_version || rm -f $IPATH/readsb_version
@@ -302,12 +302,12 @@ fi
 
 cp "$GIT"/scripts/ezz456ch-feed.service /lib/systemd/system
 
-echo 82
+echo "82%"
 
 if ! ls -l /etc/systemd/system/ezz456ch-feed.service 2>&1 | grep '/dev/null' &>/dev/null; then
     # Enable ezz456ch-feed service
     systemctl enable ezz456ch-feed >> $LOGFILE || true
-    echo 92
+    echo "92%"
     # Start or restart ezz456ch-feed service
     systemctl restart ezz456ch-feed || true
 else
@@ -318,7 +318,7 @@ else
     sleep 3
 fi
 
-echo 94
+echo "94%"
 
 systemctl is-active ezz456ch-feed &>/dev/null || {
     rm -f $IPATH/readsb_version
@@ -331,7 +331,7 @@ systemctl is-active ezz456ch-feed &>/dev/null || {
     exit 1
 }
 
-echo 96
+echo "96%"
 [[ "${MLAT_DISABLED}" == "1" ]] || systemctl is-active ezz456ch-mlat &>/dev/null || {
     rm -f $IPATH/mlat_version
     echo "---------------------------------"
@@ -365,14 +365,14 @@ if [[ -f /etc/default/ezz456ch ]]; then
 fi
 
 
-echo 100
+echo "100%"
 echo "---------------------"
 echo "---------------------"
 
 ## SETUP COMPLETE
 
 ENDTEXT="
-Thanks for choosing to share your data with adsb.ezz456ch.xyz!
+Thank you for share your data with adsb.ezz456ch.xyz!
 
 Webinterface to show the data transmitted? Run this command:
 sudo bash /usr/local/share/ezz456ch/git/install-or-update-interface.sh
