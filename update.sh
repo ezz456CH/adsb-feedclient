@@ -210,7 +210,7 @@ else
         && echo "36%" \
         && source $VENV/bin/activate >> $LOGFILE \
         && echo "38%" \
-        && pip install setuptools \
+        && pip install setuptools pyasyncore \
         && echo "40%" \
         && pip install . \
         && echo "46%" \
