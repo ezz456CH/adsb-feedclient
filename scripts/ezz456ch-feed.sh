@@ -33,9 +33,8 @@ exec /usr/local/share/ezz456ch/feed-ezz456ch --net --net-only --quiet \
     --net-beast-reduce-interval $REDUCE_INTERVAL \
     $TARGET $NET_OPTIONS \
     --lat "$LATITUDE" --lon "$LONGITUDE" \
-    $UUID_FILE $JSON_OPTIONS \
+    --uuid-file /usr/local/share/ezz456ch/ezz456ch-uuid \
+    $JSON_OPTIONS \
     $UAT_SOURCE \
     $SOURCE \
-
-
-
+    

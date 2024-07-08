@@ -256,9 +256,9 @@ fi
 
 echo "70%"
 
-# SETUP FEEDER TO SEND DUMP1090 DATA TO ADS-B EXCHANGE
+# SETUP FEEDER TO SEND DUMP1090 DATA TO adsb.ezz456ch.xyz
 
-READSB_REPO="https://github.com/adsbexchange/readsb.git"
+READSB_REPO="https://github.com/wiedehopf/readsb.git"
 READSB_BRANCH="master"
 if grep -E 'wheezy|jessie' /etc/os-release -qs; then
     READSB_BRANCH="jessie"

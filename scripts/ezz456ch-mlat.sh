@@ -32,5 +32,5 @@ exec /usr/local/share/ezz456ch/venv/bin/mlat-client \
     --lon "$LONGITUDE" \
     --alt "$ALTITUDE" \
     $PRIVACY \
-    $UUID_FILE \
+    --uuid-file /usr/local/share/ezz456ch/ezz456ch-uuid \
     $RESULTS $RESULTS1 $RESULTS2 $RESULTS3 $RESULTS4
