@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #####################################################################################
-#                     adsb.ezz456ch.xyz SETUP SCRIPT                                #
+#                     adsb.ezz456ch.com SETUP SCRIPT                                #
 #####################################################################################
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                                   #
@@ -263,7 +263,7 @@ fi
 
 echo "70%"
 
-# SETUP FEEDER TO SEND DUMP1090 DATA TO adsb.ezz456ch.xyz
+# SETUP FEEDER TO SEND DUMP1090 DATA TO adsb.ezz456ch.com
 
 READSB_REPO="https://github.com/wiedehopf/readsb.git"
 READSB_BRANCH="master"
@@ -351,7 +351,7 @@ echo "96%"
 }
 
 # Remove old method of starting the feed scripts if present from rc.local
-# Kill the old adsb.ezz456ch.xyz scripts in case they are still running from a previous install including spawned programs
+# Kill the old adsb.ezz456ch.com scripts in case they are still running from a previous install including spawned programs
 for name in ezz456ch-netcat_maint.sh ezz456ch-socat_maint.sh ezz456ch-mlat_maint.sh; do
     if grep -qs -e "$name" /etc/rc.local; then
         sed -i -e "/$name/d" /etc/rc.local || true
@@ -362,13 +362,13 @@ for name in ezz456ch-netcat_maint.sh ezz456ch-socat_maint.sh ezz456ch-mlat_maint
     fi
 done
 
-# in case the mlat-client service using /etc/default/mlat-client as config is using adsb.ezz456ch.xyz as a host, disable the service
-if grep -qs 'SERVER_HOSTPORT.*feed.ezz456ch.xyz' /etc/default/mlat-client &>/dev/null; then
+# in case the mlat-client service using /etc/default/mlat-client as config is using adsb.ezz456ch.com as a host, disable the service
+if grep -qs 'SERVER_HOSTPORT.*feed.ezz456ch.com' /etc/default/mlat-client &>/dev/null; then
     systemctl disable --now mlat-client >> $LOGFILE 2>&1 || true
 fi
 
 if [[ -f /etc/default/ezz456ch ]]; then
-    sed -i -e 's/feed.ezz456ch.xyz,30004,beast_reduce_out,feed.ezz456ch.xyz,64004/feed.ezz456ch.xyz,30004,beast_reduce_out,feed.ezz456ch.xyz,64004/' /etc/default/ezz456ch || true
+    sed -i -e 's/feed.ezz456ch.com,30004,beast_reduce_out,feed.ezz456ch.com,64004/feed.ezz456ch.com,30004,beast_reduce_out,feed.ezz456ch.com,64004/' /etc/default/ezz456ch || true
 fi
 
 
@@ -379,7 +379,7 @@ echo "---------------------"
 ## SETUP COMPLETE
 
 ENDTEXT="
-Thank you for share your data with adsb.ezz456ch.xyz!
+Thank you for share your data with adsb.ezz456ch.com!
 
 Webinterface to show the data transmitted? Run this command:
 sudo bash /usr/local/share/ezz456ch/git/install-or-update-interface.sh
@@ -416,10 +416,10 @@ https://github.com/wiedehopf/adsb-scripts/wiki/Automatic-installation-for-readsb
 fi
 
 if ! timeout 5 nc -z "$INPUT_IP" "$INPUT_PORT" && command -v nc &>/dev/null; then
-    #whiptail --title "adsb.ezz456ch.xyz Setup Script" --msgbox "$ENDTEXT2" 24 73
+    #whiptail --title "adsb.ezz456ch.com Setup Script" --msgbox "$ENDTEXT2" 24 73
     echo -e "$ENDTEXT2"
 else
     # Display the thank you message box.
-    #whiptail --title "adsb.ezz456ch.xyz Setup Script" --msgbox "$ENDTEXT" 24 73
+    #whiptail --title "adsb.ezz456ch.com Setup Script" --msgbox "$ENDTEXT" 24 73
     echo -e "$ENDTEXT"
 fi

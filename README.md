@@ -1,10 +1,10 @@
-# adsb.ezz456ch.xyz feed client
+# adsb.ezz456ch.com feed client
 
 Script for installing Feed Clients
 
 Decoder (such as dump1090 or readsb) must be installed.
 
-These scripts aid in setting up your current ADS-B receiver to feed adsb.ezz456ch.xyz.
+These scripts aid in setting up your current ADS-B receiver to feed adsb.ezz456ch.com.
 
 They will not disrupt any existing feed clients already present
 
@@ -24,12 +24,12 @@ sudo bash /tmp/ezz456ch-feed.sh
 3.1 With API
 
 ```
-curl https://api.ezz456ch.xyz/api/stats | json_pp
+curl https://api.adsb.ezz456ch.com/v1/stats
 ```
 
-3.2 View at <https://adsb.ezz456ch.xyz>
+3.2 View at <https://adsb.ezz456ch.com>
 
-3.3 View at MLAT Coverage Map <https://adsb.ezz456ch.xyz/mlat-map/>
+3.3 View at MLAT Coverage Map <https://adsb.ezz456ch.com/mlat-map/>
 
 3.4 Check the status of Feed Clients
 

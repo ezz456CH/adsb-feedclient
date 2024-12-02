@@ -19,7 +19,7 @@ EnvironmentFile=/etc/default/ezz456ch
 ExecStart=/usr/local/share/ezz456ch/venv/bin/mlat-client \
     --input-type $INPUT_TYPE --no-udp \
     --input-connect $INPUT \
-    --server feed.ezz456ch.xyz:SERVERPORT \
+    --server feed.ezz456ch.com:SERVERPORT \
     --user $USER \
     --lat $LATITUDE \
     --lon $LONGITUDE \

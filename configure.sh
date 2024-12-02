@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #####################################################################################
-#                     adsb.ezz456ch.xyz SETUP SCRIPT                                #
+#                     adsb.ezz456ch.com SETUP SCRIPT                                #
 #####################################################################################
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                                   #
@@ -43,9 +43,9 @@ function abort() {
 
 ## WHIPTAIL DIALOGS
 
-BACKTITLETEXT="adsb.ezz456ch.xyz Setup Script"
+BACKTITLETEXT="adsb.ezz456ch.com Setup Script"
 
-whiptail --backtitle "$BACKTITLETEXT" --title "$BACKTITLETEXT" --yesno "Thanks for choosing to share your data with adsb.ezz456ch.xyz!\n\nThis script will configure your current your ADS-B receiver to share your feeders data with adsb.ezz456ch.xyz.\n\nWould you like to continue setup?" 13 78 || abort
+whiptail --backtitle "$BACKTITLETEXT" --title "$BACKTITLETEXT" --yesno "Thanks for choosing to share your data with adsb.ezz456ch.com!\n\nThis script will configure your current your ADS-B receiver to share your feeders data with adsb.ezz456ch.com.\n\nWould you like to continue setup?" 13 78 || abort
 
 FEEDUSERNAME=$(whiptail --backtitle "$BACKTITLETEXT" --title "Feeder MLAT Name" --nocancel --inputbox "\nPlease enter a unique name to be shown on the MLAT map (the pin will be offset for privacy)\n\nExample: \"william34-london\", \"william34-jersey\", etc.\nDisable MLAT: enter a zero: 0" 12 78 3>&1 1>&2 2>&3) || abort
 
@@ -144,7 +144,7 @@ RESULTS4="--results beast,connect,127.0.0.1:30154"
 PRIVACY=""
 INPUT_TYPE="$INPUT_TYPE"
 
-MLATSERVER="feed.ezz456ch.xyz:31090"
-TARGET="--net-connector feed.ezz456ch.xyz,30004,beast_reduce_plus_out"
+MLATSERVER="feed.ezz456ch.com:31090"
+TARGET="--net-connector feed.ezz456ch.com,30004,beast_reduce_plus_out"
 NET_OPTIONS="--net-heartbeat 60 --net-ro-size 1280 --net-ro-interval 0.2 --net-ro-port 0 --net-sbs-port 0 --net-bi-port 30154 --net-bo-port 0 --net-ri-port 0 --write-json-every 1"
 JSON_OPTIONS="--max-range 450 --json-location-accuracy 2 --range-outline-hours 24"

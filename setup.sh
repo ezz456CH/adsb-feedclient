@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #####################################################################################
-#                     adsb.ezz456ch.xyz SETUP SCRIPT                                #
+#                     adsb.ezz456ch.com SETUP SCRIPT                                #
 #####################################################################################
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                                   #
@@ -43,7 +43,7 @@ fi
 
 if [ -f /boot/ezz456ch-config.txt ]; then
     echo --------
-    echo "You are using the adsb.ezz456ch.xyz image, the feed setup script does not need to be installed."
+    echo "You are using the adsb.ezz456ch.com image, the feed setup script does not need to be installed."
     echo "You should already be feeding."
     echo "If the feed isn't working, check/correct the configuration using nano:"
     echo --------
@@ -57,7 +57,7 @@ fi
 
 bash "$IPATH/git/configure.sh"
 
-whiptail --backtitle "$BACKTITLETEXT" --title "$BACKTITLETEXT" --yesno "We are now ready to begin setting up your receiver to feed adsb.ezz456ch.xyz.\n\nDo you wish to proceed?" 9 78 || exit 1
+whiptail --backtitle "$BACKTITLETEXT" --title "$BACKTITLETEXT" --yesno "We are now ready to begin setting up your receiver to feed adsb.ezz456ch.com.\n\nDo you wish to proceed?" 9 78 || exit 1
 
 bash "$IPATH/git/update.sh"
 

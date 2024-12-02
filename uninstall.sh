@@ -23,4 +23,4 @@ mv -f /tmp/ezz456ch-uuid "$IPATH/ezz456ch-uuid"
 set +x
 
 echo -----
-echo "adsb.ezz456ch.xyz feed scripts have been uninstalled!"
+echo "adsb.ezz456ch.com feed scripts have been uninstalled!"
