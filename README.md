@@ -2,7 +2,7 @@
 
 Script for installing Feed Clients
 
-Decoder (such as dump1090 or readsb) must be installed.
+Decoder (such as dump1090-fa or readsb) must be installed.
 
 These scripts aid in setting up your current ADS-B receiver to feed adsb.ezz456ch.com.
 
