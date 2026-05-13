@@ -1,11 +1,6 @@
 #!/bin/bash
 
-if grep -qs -e 'LATITUDE' /boot/adsb-config.txt &>/dev/null && [[ -f /boot/adsb-env ]]; then
-    source /boot/adsb-config.txt
-    source /boot/adsb-env
-else
-    source /etc/default/ezz456ch
-fi
+source /etc/default/adsb.ezz456ch.com
 
 if [[ "$LATITUDE" == 0 ]] || [[ "$LONGITUDE" == 0 ]] || [[ "$USER" == 0 ]] || [[ "$USER" == "disable" ]]; then
     echo MLAT DISABLED
@@ -23,7 +18,7 @@ while ! nc -z "$INPUT_IP" "$INPUT_PORT" && command -v nc &>/dev/null; do
     sleep 10
 done
 
-exec /usr/local/share/ezz456ch/venv/bin/mlat-client \
+exec /usr/local/share/adsb.ezz456ch.com/venv/bin/mlat-client \
     --input-type "$INPUT_TYPE" --no-udp \
     --input-connect "$INPUT" \
     --server "$MLATSERVER" \
@@ -32,5 +27,5 @@ exec /usr/local/share/ezz456ch/venv/bin/mlat-client \
     --lon "$LONGITUDE" \
     --alt "$ALTITUDE" \
     $PRIVACY \
-    --uuid-file /usr/local/share/ezz456ch/ezz456ch-uuid \
+    --uuid-file /usr/local/share/adsb.ezz456ch.com/uuid \
     $RESULTS $RESULTS1 $RESULTS2 $RESULTS3 $RESULTS4

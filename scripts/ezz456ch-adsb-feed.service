@@ -1,18 +1,19 @@
 
 [Unit]
-Description=ezz456ch-mlat
+Description=ezz456ch-adsb-feed
 Wants=network.target
 After=network.target
 
 [Service]
 User=adsb-ezz456ch-com
-ExecStart=bash /usr/local/share/adsb.ezz456ch.com/ezz456ch-mlat.sh
+RuntimeDirectory=ezz456ch-adsb-feed
+ExecStart=bash /usr/local/share/adsb.ezz456ch.com/ezz456ch-adsb-feed.sh
 Type=simple
 Restart=always
 RestartSec=30
 StartLimitInterval=1
 StartLimitBurst=100
-SyslogIdentifier=ezz456ch-mlat
+SyslogIdentifier=ezz456ch-adsb-feed
 Nice=-1
 
 [Install]

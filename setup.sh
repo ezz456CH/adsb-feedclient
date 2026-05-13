@@ -29,29 +29,13 @@
 
 set -e
 
-IPATH=/usr/local/share/ezz456ch
+IPATH=/usr/local/share/adsb.ezz456ch.com
 
 ## we need to install stuff that require root, check for that
 if [ "$(id -u)" != "0" ]; then
     echo -e "\033[33m"
     echo "This script must be ran using sudo or as root."
     echo -e "\033[37m"
-    exit 1
-fi
-
-## REFUSE INSTALLATION ON ADSBX IMAGE
-
-if [ -f /boot/ezz456ch-config.txt ]; then
-    echo --------
-    echo "You are using the adsb.ezz456ch.com image, the feed setup script does not need to be installed."
-    echo "You should already be feeding."
-    echo "If the feed isn't working, check/correct the configuration using nano:"
-    echo --------
-    echo "sudo nano /boot/ezz456ch-config.txt"
-    echo --------
-    echo "Hint for using nano: Ctrl-X to exit, Y(yes) and Enter to save."
-    echo --------
-    echo "Exiting."
     exit 1
 fi
 

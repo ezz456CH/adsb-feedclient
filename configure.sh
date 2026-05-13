@@ -31,7 +31,7 @@ set -e
 trap 'echo "[ERROR] Error in line $LINENO when executing: $BASH_COMMAND"' ERR
 renice 10 $$ &>/dev/null
 
-IPATH=/usr/local/share/ezz456ch
+IPATH=/usr/local/share/adsb.ezz456ch.com
 
 function abort() {
     echo ------------
@@ -113,12 +113,11 @@ else
 fi
 
 
-if [[ $hostname == "radarcape" ]] || pgrep rcd &>/dev/null; then
-    INPUT="127.0.0.1:10003"
-    INPUT_TYPE="radarcape_gps"
+if [[ $hostname == "radarcape" ]] && pgrep -x rcd &>/dev/null; then
+        return 0
 fi
 
-tee /etc/default/ezz456ch >/dev/null <<EOF
+tee /etc/default/adsb.ezz456ch.com >/dev/null <<EOF
 INPUT="$INPUT"
 REDUCE_INTERVAL="0.5"
 

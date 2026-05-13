@@ -1,15 +1,7 @@
 #!/bin/bash
 
-if [ -f /boot/adsb-config.txt ]; then
-    UUID_FILE="/boot/ezz456ch-uuid"
-else
-    mkdir -p /usr/local/share/ezz456ch
-    UUID_FILE="/usr/local/share/ezz456ch/ezz456ch-uuid"
-    # move old file position
-    if [ -f /boot/ezz456ch-uuid ]; then
-        mv -f /boot/ezz456ch-uuid $UUID_FILE
-    fi
-fi
+mkdir -p /usr/local/share/adsb.ezz456ch.com
+UUID_FILE="/usr/local/share/adsb.ezz456ch.com/uuid"
 
 function generateUUID() {
     rm -f $UUID_FILE
