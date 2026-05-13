@@ -8,33 +8,33 @@ These scripts aid in setting up your current ADS-B receiver to feed adsb.ezz456c
 
 They will not disrupt any existing feed clients already present
 
-## 1. Find coordinates/elevation:
+## 1. Find coordinates / elevation
 
 [FreeMapTools](https://www.freemaptools.com/elevation-finder.htm)
 
-## 2. Install the Feed Clients
+## 2. Install the Feed Client
 
-```
-curl -L -o /tmp/ezz456ch-feed.sh https://raw.githubusercontent.com/ezz456CH/adsb-feedclient/master/install.sh
-sudo bash /tmp/ezz456ch-feed.sh
+```bash copy
+curl -L -o /tmp/install.sh https://raw.githubusercontent.com/ezz456CH/adsb-feedclient/master/install.sh
+sudo bash /tmp/install.sh
 ```
 
-## 3. Check your feed status (Optional :3)
+## 3. Check your feed status (optional :3)
 
 3.1 With API
 
-```
+```bash copy
 curl https://api.adsb.ezz456ch.com/v1/stats
 ```
 
-3.2 View at <https://adsb.ezz456ch.com>
+3.2 View at [https://adsb.ezz456ch.com](https://adsb.ezz456ch.com)
 
-3.3 View at MLAT Coverage Map <https://adsb.ezz456ch.com/mlat-map/>
+3.3 View at MLAT Coverage Map [https://adsb.ezz456ch.com/mlat-map/](https://adsb.ezz456ch.com/mlat-map/)
 
-3.4 Check the status of Feed Clients
+3.4 Check the status of Feed Client
 
-```
-sudo systemctl status ezz456ch-feed
+```bash copy
+sudo systemctl status ezz456ch-adsb-feed
 sudo systemctl status ezz456ch-mlat
 ```
 
@@ -42,26 +42,26 @@ sudo systemctl status ezz456ch-mlat
 
 ### Update the feed client without reconfiguring
 
-```
-curl -L -o /tmp/ezz456ch-update.sh https://raw.githubusercontent.com/ezz456CH/adsb-feedclient/master/update.sh
-sudo bash /tmp/ezz456ch-update.sh
+```bash copy
+curl -L -o /tmp/update.sh https://raw.githubusercontent.com/ezz456CH/adsb-feedclient/master/update.sh
+sudo bash /tmp/update.sh
 ```
 
 ### Reconfigure the client without reinstalling
 
-```
-sudo nano /etc/default/ezz456ch
+```bash copy
+sudo nano /etc/default/adsb.ezz456ch.com
 ```
 
-After configuring, don't forget to restart the Feed Clients!
+After configuring, don't forget to restart the Feed Client!
 
-```
-sudo systemctl restart ezz456ch-feed
+```bash copy
+sudo systemctl restart ezz456ch-adsb-feed
 sudo systemctl restart ezz456ch-mlat
 ```
 
-### Uninstall Feed Clients
+### Uninstall Feed Client
 
-```
-sudo bash /usr/local/share/ezz456ch/uninstall.sh
+```bash copy
+sudo bash /usr/local/share/adsb.ezz456ch.com/uninstall.sh
 ```
